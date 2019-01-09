@@ -10,7 +10,10 @@ NOTE: If you strongly prefer to work locally on your own computer, you can total
 """
 
 import random
+import os
 
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
 
 def start_game():
     """Psuedo-code Hints
@@ -30,6 +33,36 @@ def start_game():
     ( You can add more features/enhancements if you'd like to. )
     """
     # write your code inside this function.
+
+    random_num = random.randint(1, 10) # Muss eine neue Nummer erzeugen wenn man ein neues Spiel startet
+    
+    #try_count = # for loop mit counter
+
+    print("--- Welcome to the number guessing game ---")
+
+    while True:
+        
+        #clear_screen() !!Muss noch gemacht werden
+
+        input_user = int(input("What is your guess? >  "))
+
+        if input_user < random_num:
+            print("The number is greater than {}, please try again".format(input_user))
+            continue
+        
+        elif input_user > random_num:
+            print("The number is smaller than {}, please try again".format(input_user))
+            continue
+
+        elif input_user == random_num:
+            print("You got it!")
+            new_round = input("Want to play again? Y/N >  ")
+            if new_round.upper() == "Y":
+                continue
+            else:
+                break
+    
+
 
 
 if __name__ == '__main__':
