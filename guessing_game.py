@@ -38,9 +38,14 @@ def start_game():
 
     try_count = 0
 
+    round_num = 1
+
     print("--- Welcome to the number guessing game ---")
 
     while True:
+
+        if round_num > 1:
+            print("Round: {}".format(round_num))
 
         print("You guessed: {} times".format(try_count))
 
@@ -63,8 +68,9 @@ def start_game():
                 print("Your score: {} times guessed".format(try_count))
                 try_count = 0
                 random_num = random.randint(1, 10)
+                round_num += 1
                 clear_screen()
-                # insert round meter - rund 1,2,3 etc + High Score
+                # insert High Score
                 continue
             else:
                 break
