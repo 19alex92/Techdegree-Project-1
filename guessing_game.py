@@ -31,22 +31,12 @@ def start_game():
     """
     # write your code inside this function.
 
-    random_num = reset_num()
-
-    try_count = reset_count()
-
-    def reset_num():
-        random_number = random.randint(1, 10) # Muss eine neue Nummer erzeugen wenn man ein neues Spiel startet
-        return random_number
-
-    def reset_count():
-        count = 0
-        return count
-
     def clear_screen():
         os.system("cls" if os.name == "nt" else "clear")
 
+    random_num = random.randint(1, 10)
 
+    try_count = 0
 
     print("--- Welcome to the number guessing game ---")
 
@@ -71,11 +61,17 @@ def start_game():
             new_round = input("Want to play again? Y/N >  ")
             if new_round.upper() == "Y":
                 print("Your score: {} times guessed".format(try_count))
+                try_count = 0
+                random_num = random.randint(1, 10)
+                clear_screen()
+                # insert round meter - rund 1,2,3 etc + High Score
                 continue
             else:
                 break
+
+        
     
-    print("Thank you for playing! Your lowest score is: {}".format(try_count))
+    print("Thank you for playing! Your high score is: {}".format(try_count))
 
 
 
