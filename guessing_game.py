@@ -12,9 +12,6 @@ NOTE: If you strongly prefer to work locally on your own computer, you can total
 import random
 import os
 
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
-
 def start_game():
     """Psuedo-code Hints
     
@@ -34,34 +31,52 @@ def start_game():
     """
     # write your code inside this function.
 
-    random_num = random.randint(1, 10) # Muss eine neue Nummer erzeugen wenn man ein neues Spiel startet
-    
-    #try_count = # for loop mit counter
+    random_num = reset_num()
+
+    try_count = reset_count()
+
+    def reset_num():
+        random_number = random.randint(1, 10) # Muss eine neue Nummer erzeugen wenn man ein neues Spiel startet
+        return random_number
+
+    def reset_count():
+        count = 0
+        return count
+
+    def clear_screen():
+        os.system("cls" if os.name == "nt" else "clear")
+
+
 
     print("--- Welcome to the number guessing game ---")
 
     while True:
-        
-        #clear_screen() !!Muss noch gemacht werden
+
+        print("You guessed: {} times".format(try_count))
 
         input_user = int(input("What is your guess? >  "))
 
         if input_user < random_num:
-            print("The number is greater than {}, please try again".format(input_user))
+            print("The number is higher than {}, please try again".format(input_user))
+            try_count += 1
             continue
         
         elif input_user > random_num:
-            print("The number is smaller than {}, please try again".format(input_user))
+            print("The number is lower than {}, please try again".format(input_user))
+            try_count += 1
             continue
 
         elif input_user == random_num:
             print("You got it!")
             new_round = input("Want to play again? Y/N >  ")
             if new_round.upper() == "Y":
+                print("Your score: {} times guessed".format(try_count))
                 continue
             else:
                 break
     
+    print("Thank you for playing! Your lowest score is: {}".format(try_count))
+
 
 
 
