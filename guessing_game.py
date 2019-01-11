@@ -32,11 +32,9 @@ def start_game():
     # write your code inside this function.
 
     random_num = random.randint(1, 10)
-
+    input_user = None
     try_count = 0
-
     round_num = 1
-
     high_score = 999
 
     def clear_screen():
@@ -44,18 +42,23 @@ def start_game():
 
     def show_score():
         if high_score < 999:
-            print("-" * 40)
-            print("High Score: {}".format(high_score))
+            print("-" * 35)
+            print("---------- High Score: {} ----------".format(high_score))
 
 
     def round_guess():
-        print("-" * 40)
+        print("-" * 35)
         print("Round: {} | You guessed: {} times".format(round_num, try_count))
-        print("-" * 40)
+        print("-" * 35)
 
-    def high():
-        print("The number is higher than {}, please try again".format(input_user))
-
+    def hint():
+        if input_user != None:
+            if input_user < random_num:
+                print("\nThe number is higher than {}, please try again \n".format(input_user))
+            elif input_user > random_num:
+                print("\nThe number is lower than {}, please try again \n".format(input_user))
+       
+    
     clear_screen()
     print("--- Welcome to the number guessing game ---")
 
@@ -63,20 +66,17 @@ def start_game():
         if high_score < 999:
             show_score()
         round_guess()
-        #print("You guessed: {} times".format(try_count))
+        hint()
 
-        input_user = int(input("What is your guess?\n >  "))
+        input_user = int(input("What is your guess?\n >   "))
 
         if input_user < random_num:
             clear_screen()
-            high()
-            #print("The number is higher than {}, please try again".format(input_user))
             try_count += 1
             continue
         
         elif input_user > random_num:
             clear_screen()
-            print("The number is lower than {}, please try again".format(input_user))
             try_count += 1
             continue
 
