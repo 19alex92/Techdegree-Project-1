@@ -31,37 +31,54 @@ def start_game():
     """
     # write your code inside this function.
 
-    def clear_screen():
-        os.system("cls" if os.name == "nt" else "clear")
-
     random_num = random.randint(1, 10)
 
     try_count = 0
 
     round_num = 1
 
+    high_score = 999
+
+    def clear_screen():
+        os.system("cls" if os.name == "nt" else "clear")
+
+    def show_score():
+        if high_score < 999:
+            print("-" * 15)
+            print("High Score: {}".format(high_score))
+
+
+    def round():
+        print("-" * 15)
+        print("Round: {}".format(round_num))
+        print("-" * 15)
+
+    clear_screen()
     print("--- Welcome to the number guessing game ---")
 
     while True:
-
-        if round_num > 1:
-            print("Round: {}".format(round_num))
-
+        if high_score < 999:
+            show_score()
+        round()
         print("You guessed: {} times".format(try_count))
 
-        input_user = int(input("What is your guess? >  "))
+        input_user = int(input("What is your guess?\n >  "))
 
         if input_user < random_num:
+            clear_screen()
             print("The number is higher than {}, please try again".format(input_user))
             try_count += 1
             continue
         
         elif input_user > random_num:
+            clear_screen()
             print("The number is lower than {}, please try again".format(input_user))
             try_count += 1
             continue
 
         elif input_user == random_num:
+            if high_score > try_count:
+                high_score = try_count + 1
             print("You got it!")
             new_round = input("Want to play again? Y/N >  ")
             if new_round.upper() == "Y":
@@ -70,14 +87,11 @@ def start_game():
                 random_num = random.randint(1, 10)
                 round_num += 1
                 clear_screen()
-                # insert High Score
                 continue
             else:
+                print("Thank you for playing! Your high score is: {}".format(high_score))
                 break
 
-        
-    
-    print("Thank you for playing! Your high score is: {}".format(try_count))
 
 
 
