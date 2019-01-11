@@ -52,9 +52,9 @@ def start_game():
     def hint():
         if try_count > 0:
             if input_user < random_num:
-                print("\nThe number is higher than {}, please try again \n".format(input_user))
+                print("\nIt's higher than {}, please try again \n".format(input_user))
             elif input_user > random_num:
-                print("\nThe number is lower than {}, please try again \n".format(input_user))
+                print("\nIt's lower than {}, please try again \n".format(input_user))
 
     def finish():
         clear_screen()
