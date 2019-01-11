@@ -30,9 +30,9 @@ def start_game():
 
     def finish():
         clear_screen()
-        print("#" * 31)
-        print("#### Your High Score is: {} ####".format(high_score))
-        print("#" * 31)
+        print("#" * 53)
+        print("#### Rounds completed: {} | Your High Score is: {} ####".format(round_num, high_score))
+        print("#" * 53)
         print("\n--- Thank you for playing! ---\n")
        
     clear_screen()
