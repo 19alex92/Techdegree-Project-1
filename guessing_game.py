@@ -64,7 +64,8 @@ def start_game():
         print("\n--- Thank you for playing! ---\n")
        
     clear_screen()
-    print("--- Welcome to the number guessing game ---")
+    print("--- Welcome to the number guessing game ---\n")
+    print("Please enter a number between 1 and 10, good luck!\n")
 
     while True:
         show_score()
@@ -77,7 +78,7 @@ def start_game():
                 raise ValueError
         except ValueError as err:
             clear_screen()
-            print(" >>> You have to put in a number between 1 and 10 <<<")
+            print("\n>>> Ups! That didn't work, please put in a number between 1 and 10 <<<\n")
             continue
 
         if input_user < random_num:
