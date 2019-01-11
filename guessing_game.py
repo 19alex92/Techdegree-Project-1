@@ -58,7 +58,10 @@ def start_game():
 
     def finish():
         clear_screen()
-        print("#### Your high score is: {} ####\n\n --- Thank you for playing! ---".format(high_score))
+        print("#" * 31)
+        print("#### Your High Score is: {} ####".format(high_score))
+        print("#" * 31)
+        print("\n--- Thank you for playing! ---\n")
        
     clear_screen()
     print("--- Welcome to the number guessing game ---")
@@ -66,9 +69,16 @@ def start_game():
     while True:
         show_score()
         round_guess()
-        hint()
 
-        input_user = int(input("What is your guess?\n >   "))
+        try:
+            hint()
+            input_user = int(input("What is your guess?\n >   "))
+            if input_user > 10:
+                raise ValueError
+        except ValueError as err:
+            clear_screen()
+            print(" >>> You have to put in a number between 1 and 10 <<<")
+            continue
 
         if input_user < random_num:
             clear_screen()
