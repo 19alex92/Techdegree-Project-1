@@ -46,7 +46,7 @@ def start_game():
         try:
             hint()
             input_user = int(input("\nWhat is your guess?\n  >  "))
-            if input_user > 10:
+            if input_user > 10 or input_user < 1:
                 raise ValueError
         except ValueError as err:
             clear_screen()
