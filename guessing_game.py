@@ -51,7 +51,7 @@ def start_game():
             input_user = int(input("\nWhat is your guess?\n  >  "))
             if input_user > 10 or input_user < 1:
                 raise ValueError
-        except ValueError as err:
+        except ValueError:
             clear_screen()
             print("\n>>> Ups! That didn't work, please put in a number between 1 and 10 <<<\n")
             continue
